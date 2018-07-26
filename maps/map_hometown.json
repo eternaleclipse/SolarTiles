@@ -1,6 +1,7 @@
 {
     "playerX": 10,
     "playerY": 18,
+    "tileColor": "lightGreen",
     "objects": [{
         "type": "tree",
         "x": 7,

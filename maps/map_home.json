@@ -3,8 +3,17 @@
     "playerY": 18,
     "tileColor": "cozyBrown",
     "objects": [{
-        "type": "tree",
-        "x": 1,
-        "y": 1
+        "type": "mapPortal",
+        "destMap": "maps/map_hometown.json",
+        "image": "#img_doormat",
+        "x": 9,
+        "y": 19
+    },
+    {
+        "type": "mapPortal",
+        "destMap": "maps/map_hometown.json",
+        "image": "#img_doormat",
+        "x": 10,
+        "y": 19
     }]
 }
