@@ -18,7 +18,7 @@ var setupObjects = {
         }
 
         obj.onCollide = function() {
-            if (!Map.findObjectByPos(obj.destX, obj.destY)){
+            if (!Map.findObjectByTile(obj.destX, obj.destY)){
                 Player.x = obj.destX
                 Player.y = obj.destY
             }

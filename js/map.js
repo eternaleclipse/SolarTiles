@@ -3,7 +3,13 @@ var Map = {
     height:   20, // tiles
     tileSize: 32, // px
     loading: false,
+    inputEnabled: false,
     tileColor: Colors.lightGreen,
+    mouseTile: {
+        x: 0,
+        y: 0,
+    },
+    mode: "play",
     drawTile: function(ctx, x, y, color) {
         ctx.fillStyle = Colors.black
         ctx.beginPath()
@@ -32,9 +38,14 @@ var Map = {
         Map.objects.forEach(function(obj) {
             ctx.drawImage($(obj.image)[0], obj.x * Map.tileSize, obj.y * Map.tileSize, Map.tileSize, Map.tileSize)
         })
+
+        if (Map.mode == "edit") {
+            ctx.drawImage($("#img_tree")[0], Map.mouseTile.x * Map.tileSize, Map.mouseTile.y * Map.tileSize, Map.tileSize, Map.tileSize)
+        }
     },
     load: function(mapUrl) {
         Map.loading = true
+        Map.inputEnabled = false
         $.getJSON(mapUrl, function(mapData) {
             if (mapData.tileColor) {
                 if (mapData.tileColor.startsWith("#")) {
@@ -54,12 +65,29 @@ var Map = {
                 }
             })
 
+            Map.inputEnabled = true
             Map.loading = false
             updateScreen()
         })
     },
+    switchMode: function(mode) {
+        switch (mode) {
+        case "play":
+            Map.mode = "play"
+            break
+
+        case "edit":
+            Map.mode = "edit"
+            break
+
+        default:
+            break
+        }
+
+        updateScreen()
+    },
     objects: [],
-    findObjectByPos: function(x, y) {
+    findObjectByTile: function(x, y) {
         var foundObj
         Map.objects.forEach(function(obj) {
             if (obj.x == x && obj.y == y) {
@@ -67,5 +95,12 @@ var Map = {
             }
         })
         return foundObj
+    },
+    // Get tile coords from px coords
+    getTileByPos: function(pos) {
+        return {
+            x: Math.floor(pos.x / Map.tileSize),
+            y: Math.floor(pos.y / Map.tileSize)
+        }
     }
 }

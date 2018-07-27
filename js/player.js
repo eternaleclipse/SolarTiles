@@ -23,7 +23,7 @@ var Player = {
             break
         }
 
-        collidedObj = Map.findObjectByPos(destX, destY)
+        collidedObj = Map.findObjectByTile(destX, destY)
         if (collidedObj) {
             if (collidedObj.onCollide) {
                 collidedObj.onCollide()
