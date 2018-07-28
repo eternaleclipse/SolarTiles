@@ -8,6 +8,26 @@ function getCanvasMousePos(canvas, event) {
 }
 
 function setupInputHandler() {
+    /*
+    $(function() {    
+        $("#gameDiv")
+            .on('mousedown touchstart', function (e) {
+                console.log("(x,y) = (" + e.pageX + "," + e.pageY +")");
+                xDown = e.pageX;
+                yDown = e.pageY;
+            })
+            .on('mouseup touchend',function (e) {
+                console.log("(x,y) = (" + e.pageX + "," + e.pageY +")");
+                xUp = e.pageX;
+                yUp = e.pageY;
+                if (xDown != xUp || yDown != yUp) {
+                    alert('Swiped');   
+                }
+            })
+        ;    
+    })(jQuery);
+    */
+
     $(document).keydown(function(e) {
         if (!Map.inputEnabled) {
             return
