@@ -1,6 +1,7 @@
 var Player = {
     x: 0,
     y: 0,
+    type: "player",
     move: function(direction) {
         var destX = Player.x
         var destY = Player.y
@@ -26,7 +27,7 @@ var Player = {
         collidedObj = Map.findObjectByTile(destX, destY)
         if (collidedObj) {
             if (collidedObj.onCollide) {
-                collidedObj.onCollide()
+                collidedObj.onCollide(Player)
             }
         }
         else {
