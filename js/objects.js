@@ -20,9 +20,17 @@ var setupObjects = {
         }
 
         obj.onCollide = function(collidedObj) {
-            if (!Map.findObjectByTile(obj.destX, obj.destY)){
-                collidedObj.x = obj.destX
-                collidedObj.y = obj.destY
+            otherCollidedObj = Map.findObjectByTile(obj.destPortalX, obj.destPortalY + 1)
+            if (!otherCollidedObj) {
+                collidedObj.x = obj.destPortalX
+                collidedObj.y = obj.destPortalY + 1
+            } else {
+                if (otherCollidedObj.onCollide) {
+                    destPortal = Map.findObjectByTile(obj.destPortalX, obj.destPortalY)
+                    if (destPortal) {
+                        otherCollidedObj.onCollide(destPortal)
+                    }
+                }
             }
         }
     },

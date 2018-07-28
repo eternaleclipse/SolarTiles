@@ -31,16 +31,16 @@
     },
     {
         "type": "portal",
-        "destX": 16,
-        "destY": 2,
+        "destPortalX": 16,
+        "destPortalY": 1,
         "x": 16,
         "y": 9
     },
     {
         "type": "portal",
         "image": "#img_portal_blue",
-        "destX": 16,
-        "destY": 10,
+        "destPortalX": 16,
+        "destPortalY": 9,
         "x": 16,
         "y": 1
     },
