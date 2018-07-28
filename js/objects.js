@@ -43,11 +43,14 @@ var setupObjects = {
         }
 
         obj.onCollide = function(collidedObj) {
-            x = 2 * obj.x - collidedObj.x
-            y = 2 * obj.y - collidedObj.y
+            x = clamp(2 * obj.x - collidedObj.x, 0, Map.width)
+            y = clamp(2 * obj.y - collidedObj.y, 0, Map.height)
+            if (x == obj.x && y == obj.y) {
+                return
+            }
             
             otherCollidedObj = Map.findObjectByTile(x, y)
-            if (!otherCollidedObj){
+            if (!otherCollidedObj) {
                 obj.x = x
                 obj.y = y
             } else {
